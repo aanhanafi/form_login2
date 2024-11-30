@@ -1,28 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form Login</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="
+    sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form id="loginForm">
-            <div class="input-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit" class="btn">Login</button>
-            <p id="error-message" class="error-message"></p>
-        </form>
+<!-- Custom Alert -->
+<div id="custom-alert" class="custom-alert">
+    <div class="alert-content">
+        <span id="alert-message"></span>
+        <button id="close-alert" class="close-alert">OK</button>
     </div>
+</div>
+    <header>
+        <h2 class="logo"><i class="fa-solid fa-futbol"></i> Pemweb 1</h2>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Galerry</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+            <Button class="popup-login">Login</Button>
+        </nav>
+    </header>
 
-    <script src="script.js"></script>
+    <div class="wrapper">
+        <span class="close"><i class="fa-solid fa-xmark"></i></span>
+        
+        <!-- Form Login -->
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form id="login-form" action="#" method="post">
+                <div class="form-input">
+                    <span class="icon"><i class="fa-solid fa-user"></i></span>
+                    <input type="text" id="login-username" placeholder="Username" required>
+                    <label>Username</label>
+                </div>
+                <div class="form-input">
+                    <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox" name="remember"> Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="button" class="login-btn">Login</button>
+                <div class="login-register">
+                    <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                </div>
+            </form>
+        </div>
+    
+        <!-- Form Registrasi -->
+        <div class="form-box register">
+            <h2>Registrasi</h2>
+            <form id="register-form" action="#" method="post">
+                <div class="form-input">
+                    <span class="icon"><i class="fa-solid fa-user"></i></span>
+                    <input type="text" id="register-username" placeholder="Username" required>
+                    <label>Username</label>
+                </div>
+                <div class="form-input">
+                    <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                    <input type="password" id="register-password" placeholder="Password" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox" id="terms" required> I agree to the terms & conditions</label>
+                </div>
+                <button type="button" class="register-btn">Register</button>
+                <div class="login-register">
+                    <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+        
+    </div>
+    <script type="text/javascript">
+        const wrapper = document.querySelector('.wrapper');
+        const loginlink = document.querySelector('.login-link');
+        const registerlink = document.querySelector('.register-link');
+        const btnpopup = document.querySelector('.popup-login');
+        const iconclose = document.querySelector('.close');
+
+        registerlink.addEventListener('click', ()=>{
+            wrapper.classList.add('active');
+        });
+        loginlink.addEventListener('click', ()=>{
+            wrapper.classList.remove('active');
+        });
+        btnpopup.addEventListener('click', ()=>{
+            wrapper.classList.add('active-popup');
+        });
+        iconclose.addEventListener('click', ()=>{
+            wrapper.classList.remove('active-popup');
+        });
+
+//dashboard//
+// Ambil elemen dari form registrasi dan login
+// Fungsi untuk menampilkan custom alert
+function showAlert(message) {
+    const alertBox = document.getElementById('custom-alert');
+    const alertMessage = document.getElementById('alert-message');
+    alertMessage.textContent = message;
+
+    alertBox.classList.add('show');
+
+    const closeButton = document.getElementById('close-alert');
+    closeButton.onclick = function() {
+        alertBox.classList.remove('show');
+    };
+}
+
+// Ambil elemen dari form registrasi dan login
+const registerBtn = document.querySelector('.register-btn');
+const loginBtn = document.querySelector('.login-btn');
+
+// Fungsi untuk Registrasi
+registerBtn.addEventListener('click', () => {
+    const username = document.getElementById('register-username').value;
+    const password = document.getElementById('register-password').value;
+    const termsAccepted = document.getElementById('terms').checked;
+
+    if (!username || !password) {
+        showAlert('Harap isi semua kolom!');
+        return;
+    }
+    if (!termsAccepted) {
+        showAlert('Anda harus menyetujui syarat dan ketentuan!');
+        return;
+    }
+
+    const user = { username, password };
+    localStorage.setItem(username, JSON.stringify(user));
+    showAlert('Registrasi berhasil! Silakan login.');
+});
+
+// Fungsi untuk Login
+loginBtn.addEventListener('click', () => {
+    const username = document.getElementById('login-username').value;
+    const password = document.getElementById('login-password').value;
+
+    if (!username || !password) {
+        showAlert('Harap isi semua kolom!');
+        return;
+    }
+
+    const storedUser = localStorage.getItem(username);
+    if (storedUser) {
+        const user = JSON.parse(storedUser);
+        if (user.password === password) {
+            showAlert('Login berhasil!');
+            // Simpan username ke localStorage untuk digunakan di dashboard
+            localStorage.setItem('currentUser', username);
+            window.location.href = 'dashboard.html'; // Ganti dengan halaman dashboard Anda
+        } else {
+            showAlert('Password salah!');
+        }
+    } else {
+        showAlert('Pengguna tidak ditemukan!');
+    }
+});
+
+
+    </script>
 </body>
 </html>
