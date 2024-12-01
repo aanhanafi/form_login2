@@ -1,28 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-    <!-- Modal Alert (untuk Logout) -->
-<div id="logout-modal" class="modal-alert">
-    <div class="alert-content">
-        <span>Apakah Anda yakin ingin logout?</span>
-        <div class="alert-buttons">
-            <button id="confirm-logout" class="alert-btn">OK</button>
-            <button id="cancel-logout" class="alert-btn">Cancel</button>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard</title>
+        <title>Form Login</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="
+        sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            h1, p {
+    text-align: center; /* Memusatkan teks secara horizontal */
+    margin: 0; /* Menghapus margin default */
+}
+    h2.logo {
+    position: absolute;
+    top: 27px; /* Sedikit lebih jauh dari atas */
+    left: 20px; /* Tidak terlalu di pojok kiri */
+    font-size: 28px;
+    color: white;
+    display: flex;
+    align-items: center;
+    }
+    h2.logo i {
+        margin-right: 10px; /* Jarak antara ikon dan teks */
+    }
+    @media (max-width: 768px) {
+    h2.logo {
+        font-size: 20px; /* Ukuran font sedikit lebih kecil pada perangkat kecil */
+        left: 20px; /* Menjaga jarak dari kiri yang lebih konsisten */
+        top: 27px; /* Sedikit menambah jarak atas */
+    }
+    h1 {
+        font-size: 30px; /* Ukuran font sedikit lebih kecil pada perangkat kecil */
+    }
+    p {
+        font-size: 20px; /* Ukuran font lebih kecil pada perangkat kecil */
+    }
+    }
+        </style>
+    </head>
+    <body>
+        <h2 class="logo"><i class="fa-solid fa-user"></i> Nur Hanafi Manap</h2>
+        <!-- Modal Alert (untuk Logout) -->
+        <div id="logout-modal" class="modal-alert">
+            <div class="alert-content">
+                <span>Apakah Anda yakin ingin logout?</span>
+                <div class="alert-buttons">
+                    <button id="confirm-logout" class="alert-btn">OK</button>
+                    <button id="cancel-logout" class="alert-btn">Cancel</button>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-
-    <div class="dashboard-container">
-    <h1>Welcome to the Dashboard <span id="username"></span>!</h1>
-    <p>You have successfully logged in.</p>
-    </div>
-    <button id="logout-btn">Logout</button>
-</body>
-<script src="dashboard.js"></script>
+        <div class="dashboard-container">
+        <h1>Welcome to the Dashboard <span id="username"></span>!</h1>
+        <p>You have successfully logged in.</p>
+        </div>
+        <button id="logout-btn">Logout</button>
+    </body>
+    <script src="dashboard.js"></script>
 </html>
