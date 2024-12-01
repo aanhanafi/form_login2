@@ -270,11 +270,9 @@ nav .popup-login:hover{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     z-index: 1000;
 }
-
 .custom-alert.show {
     display: block; /* Menampilkan alert */
 }
-
 .alert-content {
     background-color: rgba(0, 0, 0, 0.7); /* Background semi-transparan */
     padding: 20px;
@@ -282,15 +280,14 @@ nav .popup-login:hover{
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
 .alert-content span {
     display: block;
     margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     color: #333;
     font-weight: bold;
 }
-
 .close-alert {
     background-color: #c03939;
     color: white;
@@ -300,7 +297,6 @@ nav .popup-login:hover{
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
 .close-alert:hover {
     background-color: midnightblue;
 }
@@ -339,7 +335,6 @@ nav .popup-login:hover{
     margin-bottom: 20px;
     display: block;
 }
-
 .alert-buttons {
     display: flex;
     justify-content: space-around;
@@ -355,7 +350,6 @@ nav .popup-login:hover{
     font-size: 16px;
     transition: background-color 0.3s ease;
 }
-
 .alert-btn:hover {
     background-color: #ff4c4c; /* Efek hover lebih gelap */
 }
@@ -363,10 +357,10 @@ nav .popup-login:hover{
 #cancel-logout {
     background-color: #5c6bc0; /* Warna tombol cancel */
 }
-
 #cancel-logout:hover {
     background-color: #3f51b5; /* Efek hover cancel */
 }
+
 /*TOAST NOTIF*/
 /* Style untuk Toast Notification */
 .toast {
@@ -385,15 +379,125 @@ nav .popup-login:hover{
     transition: opacity 0.5s ease, visibility 0.5s ease;
     z-index: 1000;
 }
-
 .toast.show {
     opacity: 1;
     visibility: visible;
 }
-
 /* Jika Anda ingin efek hilang setelah beberapa detik */
 .toast.hide {
     opacity: 0;
     visibility: hidden;
+}
+
+
+/*RESPONSIF*/
+/* Mengubah posisi tombol burger di pojok kanan */
+.menu-toggle {
+    display: none; /* Default tidak terlihat */
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    right: 20px; /* Posisikan ke kanan */
+}
+
+/*Media 768px*/
+@media screen and (max-width: 819px) {
+    /* Atur padding header agar lebih kecil di layar kecil */
+    header {
+        padding: 20px 30px;
+        justify-content: center; /* Tengahin header */
+    }
+    .menu-toggle {
+        display: flex; /* Default tidak terlihat */
+        font-size: 28px;
+        color: white;
+        cursor: pointer;
+        background: none;  /* Menghilangkan background */
+        border: none;      /* Menghilangkan border */
+        position: absolute;
+        right: 20px; /* Posisikan ke kanan */
+    }
+    /* Logo tetap besar di layar kecil */
+    .logo {
+        font-size: 28px;
+    }
+    /* Sembunyikan navigasi secara default */
+    nav {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: rgba(22, 41, 56, 0.9); /* Latar belakang saat di mobile */
+        border-radius: 10px;
+        flex-direction: column;
+        padding: 10px 20px;
+    }
+    /* Saat tombol burger diklik, tampilkan nav */
+    nav.active {
+        display: flex;
+    }
+    /* Menu Navigasi */
+    nav a {
+        margin-left: 0;
+        margin-top: 10px;
+        font-size: 16px;
+    }
+    /* Button login di pojok kanan bawah */
+    nav .popup-login {
+        margin-left: 0;
+        margin-top: 20px;
+        align-self: flex-end;
+    }
+
+    
+}
+
+/* Responsive untuk ukuran layar lebih kecil (Tablet 1024px dan 820px) */
+
+
+/* Responsif untuk ukuran layar 820px ke bawah (Mobile) */
+/* Media Query for min-width 820px */
+/* Media Query for iPad Air (820px - 1180px) */
+@media (min-width: 820px) and (max-width: 1180px) {
+    header {
+        padding: 20px 40px; /* Menyesuaikan padding agar header lebih ramping */
+    }
+    .logo {
+        font-size: 30px; /* Menyesuaikan ukuran logo agar tidak terlalu besar */
+    }
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Mengatur navbar agar rapi dan sejajar tengah */
+        flex-wrap: wrap; /* Membuat navbar bisa membungkus jika terlalu panjang */
+    }
+    nav a {
+        font-size: 18px; /* Menyesuaikan ukuran font navbar */
+        color: white;
+        font-weight: bold;
+        margin-left: 20px; /* Mengurangi margin antar item navbar */
+    }
+    nav a:first-child {
+        margin-left: 0; /* Menghilangkan margin kiri untuk item pertama */
+    }
+    nav .popup-login {
+        font-size: 18px;
+        width: 130px; /* Mengatur ulang lebar tombol login agar proporsional */
+        margin-left: 20px; /* Memberi jarak antar tombol dan link navbar */
+    }
+    
+    /* Membuat navbar menjadi lebih rapih pada ukuran layar yang lebih lebar */
+    nav a {
+        margin-left: 30px; /* Mengatur jarak antar elemen lebih seimbang */
+    }
+    nav .popup-login:hover {
+        background: white;
+        color: #162938;
+    }
+}
+/* Tambahan untuk menampilkan menu ketika tombol diklik */
+#menu-toggle:checked + #nav-menu {
+    display: flex;
 }
 
