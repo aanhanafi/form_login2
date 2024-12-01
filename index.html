@@ -17,17 +17,19 @@
         <button id="close-alert" class="close-alert">OK</button>
     </div>
 </div>
-    <header>
-        <h2 class="logo"><i class="fa-solid fa-futbol"></i> Pemweb 1</h2>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Galerry</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
-            <Button class="popup-login">Login</Button>
-        </nav>
-    </header>
+<header>
+    <h2 class="logo"><i class="fa-solid fa-futbol"></i> Pemweb 1</h2>
+    <!-- Tombol menu (Burger Icon) untuk mobile -->
+    <button class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+    <nav id="nav-menu">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Gallery</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+        <button class="popup-login">Login</button>
+    </nav>
+</header>
 
     <div class="wrapper">
         <span class="close"><i class="fa-solid fa-xmark"></i></span>
@@ -153,7 +155,6 @@ loginBtn.addEventListener('click', () => {
         showAlert('Harap isi semua kolom!');
         return;
     }
-
     const storedUser = localStorage.getItem(username);
     if (storedUser) {
         const user = JSON.parse(storedUser);
@@ -170,7 +171,24 @@ loginBtn.addEventListener('click', () => {
     }
 });
 
+//baruu
+// Mendapatkan elemen tombol menu dan menu navigasi
+const menuToggle = document.getElementById('menu-toggle');
+const navMenu = document.getElementById('nav-menu');
 
+// Menambahkan event listener untuk tombol burger
+menuToggle.addEventListener('click', () => {
+    // Toggle kelas 'active' pada menu navigasi
+    navMenu.classList.toggle('active');
+});
+// Menangani klik pada link di menu untuk menutup menu secara otomatis
+const navLinks = document.querySelectorAll('nav a, .popup-login'); // Semua link dan tombol login
+
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active'); // Menutup menu ketika salah satu link diklik
+    });
+});
     </script>
 </body>
 </html>
